@@ -15,7 +15,7 @@ export const Home = () => {
         <TypographyP text="Passionné par la création et l'innovation, je mets mes compétences au service de vos projets. Actuellement à la recherche d'une entreprise pour une alternance en tant que Master CTO | Chef de Projet." />
         <div>
 
-          <a href="www.linkedin.com/in/yann-clain-185a91235" target="_blank">
+          <a href="https://www.linkedin.com/in/yann-clain-185a91235/" target="_blank">
             <Button className="p-4 pl-0 mt-4" variant={"link"}>
               <LinkedInLogoIcon /> LinkedIn
             </Button>

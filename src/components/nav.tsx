@@ -1,10 +1,10 @@
-import { useState } from "react"
 import { Button } from "./ui/button"
 import { useNavigate } from "react-router-dom"
 import logo from '../assets/img/logo.png'
+import { Sheet, SheetClose, SheetContent, SheetTrigger } from "./ui/sheet"
+import { ArrowRightIcon } from "@radix-ui/react-icons"
 
 export const NavigationBar = () => {
-  const [state, setState] = useState(false)
   const navigate = useNavigate()
   const pathname = window.location.pathname
 
@@ -24,30 +24,45 @@ export const NavigationBar = () => {
             alt="Title logo"
           />
           <div className="md:hidden">
-            <button className="text-gray-500 hover:text-gray-800"
-              onClick={() => setState(!state)}
-            >
-              {
-                state ? (
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
-                  </svg>
-                ) : (
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                  </svg>
-                )
-              }
-            </button>
+            <Sheet>
+              <SheetTrigger>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+              </SheetTrigger>
+              <SheetContent side={"left"} className="w-[400px]">
+                <div className={`flex-1 pb-3 mt-8 md:pb-0 md:mt-0 block`}>
+                  <ul  className="justify-end items-center space-y-6 md:flex md:space-x-6 md:space-y-0">
+                    {
+                      navigation.map((item, idx) => {
+                        return (
+                          <SheetClose asChild key={idx} >
+                            <li className="text-gray-700 hover:text-indigo-600 flex items-center">
+                              {
+                                pathname === item.path && <ArrowRightIcon className="text-primary h-8" />
+                              }
+                              <Button variant={"link"} onClick={() => { navigate(item.path) }} className={pathname == item.path ? "active" : "p-0"}>
+                                {item.title}
+                              </Button>
+                            </li>
+                          </SheetClose>
+                        )
+                      })
+                    }
+                  </ul>
+                </div>
+              </SheetContent>
+            </Sheet>
           </div>
+          
         </div>
-        <div className={`flex-1 pb-3 mt-8 md:block md:pb-0 md:mt-0 ${state ? 'block' : 'hidden'}`}>
+        <div className={`flex-1 pb-3 mt-8 md:block md:pb-0 md:mt-0 hidden`}>
           <ul className="justify-end items-center space-y-6 md:flex md:space-x-6 md:space-y-0">
             {
               navigation.map((item, idx) => {
                 return (
                   <li key={idx} className="text-gray-700 hover:text-indigo-600">
-                    <Button variant={"link"} onClick={() => {navigate(item.path)}} className={pathname == item.path ? "p-O active": "p-0"}>
+                    <Button variant={"link"} onClick={() => {navigate(item.path)}} className={pathname == item.path ? "p-0 active": "p-0"}>
                       {item.title}
                     </Button>
                   </li>

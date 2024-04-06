@@ -24,7 +24,7 @@ export const CardProject: FC<CardProjectProps> = ({ image, company, technologie 
         </dl>
 
         <div className="mt-2 flex items-center gap-8 text-xs">
-          <div className="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2">
+          <div className="inline-flex sm:shrink-0 sm:items-center gap-2">
             {
               technologie.map((techno) => (
                 <Badge>{techno}</Badge>
