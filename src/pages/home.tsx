@@ -3,6 +3,7 @@ import { TypographyH3 } from "@/components/h3"
 import { TypographyP } from "@/components/p"
 import { CardProject } from "@/components/reusable/card_project"
 import { Button } from "@/components/ui/button"
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
 import { GitHubLogoIcon, LinkedInLogoIcon, TwitterLogoIcon } from "@radix-ui/react-icons"
 
 
@@ -40,15 +41,41 @@ export const Home = () => {
         <h4 className="scroll-m-20 text-xl tracking-tight py-5 text-gray-500 uppercase">
           Projet récents
         </h4>
-        <div className="flex flex-col gap-3 justify-center items-center sm:flex-col md:flex-col lg:flex-row xl:flex-row">
-          <a href="https://seigos.fr/" target="_blank">
-            <CardProject image='https://is1-ssl.mzstatic.com/image/thumb/Purple116/v4/27/10/42/271042e5-61b7-0534-c6c2-e9dc9e7c2326/AppIcon-1x_U007emarketing-0-7-0-85-220.png/512x512bb.jpg' company="SEIGOS (Yukan Innovate)" technologie={['NestJs', 'Angular', 'MariaDB']} />
-          </a>
+        <div className="flex gap-3 justify-center items-center">
+          <Carousel
+            opts={{
+              align: "start",
+            }}
+            className="hidden lg:block"
+          >
+            <CarouselContent>
+              <CarouselItem className="md:basis-1/3 lg:basis-1/3">
+                <a href="https://seigos.fr/" target="_blank">
+                  <CardProject image='https://is1-ssl.mzstatic.com/image/thumb/Purple116/v4/27/10/42/271042e5-61b7-0534-c6c2-e9dc9e7c2326/AppIcon-1x_U007emarketing-0-7-0-85-220.png/512x512bb.jpg' company="SEIGOS (Yukan Innovate)" technologie={['NestJs', 'Angular', 'MariaDB']} />
+                </a>
+              </CarouselItem>
+              <CarouselItem className="md:basis-1/2 lg:basis-1/3">
+                <a href="https://step-post.fr/" target="_blank">
+                  <CardProject company="StepPost" technologie={['Symfony', 'Mysql']} />
+                </a>
+              </CarouselItem>
+              <CarouselItem className="md:basis-1/2 lg:basis-1/3">
+                <CardProject company="TaskFlow (Projet Personnel)" technologie={['React-Ts', 'AdonisJs', 'Mysql']} />
+              </CarouselItem>
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
+          <div className="lg:hidden grid md:grid-cols-2 grid-cols-1 gap-4">
+            <a href="https://seigos.fr/" target="_blank">
+              <CardProject image='https://is1-ssl.mzstatic.com/image/thumb/Purple116/v4/27/10/42/271042e5-61b7-0534-c6c2-e9dc9e7c2326/AppIcon-1x_U007emarketing-0-7-0-85-220.png/512x512bb.jpg' company="SEIGOS (Yukan Innovate)" technologie={['NestJs', 'Angular', 'MariaDB']} />
+            </a>
 
-          <a href="https://step-post.fr/" target="_blank">
-            <CardProject company="StepPost" technologie={['Symfony', 'Mysql']} />
-          </a>
-          <CardProject company="TaskFlow (Projet Personnel)" technologie={['React-Ts', 'AdonisJs', 'Mysql']}/>
+            <a href="https://step-post.fr/" target="_blank">
+              <CardProject company="StepPost" technologie={['Symfony', 'Mysql']} />
+            </a>
+            <CardProject company="TaskFlow (Projet Personnel)" technologie={['React-Ts', 'AdonisJs', 'Mysql']} />
+          </div>
         </div>
       </div>
 

@@ -50,35 +50,38 @@ export const Contact = () => {
           >
             <div>
               <Label htmlFor="fullname" className="font-medium">
-                Full name
+                Nom (Complet)
               </Label>
               <Input
                 {...register('fullname')}
                 className='bg-white'
                 type="text"
+                placeholder='e-g: John Doe'
               />
               {errors?.fullname && <p className="text-sm text-red-600 mt-2">{errors.fullname.message}</p>}
             </div>
             <div>
               <Label htmlFor="email" className="font-medium">
-                Email
+                Adresse e-mail
               </Label>
               <Input
                 {...register('email')}
                 className='bg-white'
                 type="email"
+                placeholder='e-g: example@example.com'
               />
               {errors?.email && <p className="text-sm text-red-600 mt-2">{errors.email.message}</p>}
             </div>
             <div>
               <Label htmlFor="phone" className="font-medium">
-                Phone number
+                Télèphone
               </Label>
               <div className="relative mt-2">
                 <Input
                   {...register('phone')}
                   className='bg-white'
                   type="number"
+                  placeholder='e-g: 0654 12 34 56'
                 />
               </div>
               {errors?.phone && <p className="text-sm text-red-600 mt-2">{errors.phone.message}</p>}
@@ -88,8 +91,9 @@ export const Contact = () => {
                 Message
               </Label>
               <textarea
+                placeholder='Votre message'
                 {...register('message')}
-                className="bg-white w-full mt-2 h-36 px-3 py-2 resize-none appearance-none bg-transparent outline-none border focus:border-gray-800 shadow-sm rounded-lg"></textarea>
+                className="bg-white w-full mt-2 h-36 px-3 py-2 resize-none appearance-none bg-transparent outline-none border focus:border-primary shadow-sm rounded-lg"></textarea>
               {errors?.message && <p className="text-sm text-red-600 mt-2">{errors.message.message}</p>}
             </div>
             <Button
