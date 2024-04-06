@@ -5,14 +5,17 @@ import { CardProject } from "@/components/reusable/card_project"
 import { Button } from "@/components/ui/button"
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
 import { GitHubLogoIcon, LinkedInLogoIcon, TwitterLogoIcon } from "@radix-ui/react-icons"
+import fuse from '../assets/img/Saly-43.png'
 
 
 export const Home = () => {
   return (
     <div className="w-full pt-14 lg:pt-0">
-      <div className="md:w-2/3  px-12">
+      <div className="md:w-2/3 px-12 ">
         <TypographyH3 text="Bonjour, Je suis Yann Clain" />
-        <TypographyH1 text="Développeur web & web mobile | Concepteur D'application" />
+        <div className="md:my-9">
+          <TypographyH1 text="Développeur web & web mobile | Concepteur D'application" />
+        </div>
         <TypographyP text="Passionné par la création et l'innovation, je mets mes compétences au service de vos projets. Actuellement à la recherche d'une entreprise pour une alternance en tant que Master CTO | Chef de Projet." />
         <div>
 
@@ -36,6 +39,8 @@ export const Home = () => {
 
         </div>
       </div>
+
+      <img src={fuse} alt="logo fuse" width={150} className="absolute right-0 top-1/4" />
 
       <div className="px-12 mt-2">
         <h4 className="scroll-m-20 text-xl tracking-tight py-5 text-gray-500 uppercase">
