@@ -2,7 +2,7 @@ import { TypographyH3 } from '@/components/h3';
 import { TypographyP } from '@/components/p';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Label } from '@radix-ui/react-label';
+import { Label } from '@/components/ui/label';
 import { SubmitHandler, useForm, } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -38,7 +38,7 @@ export const Contact = () => {
   };
   return (
     <div className=' pt-14 lg:pt-0'>
-      <div className="relative z-10 max-w-screen-xl mx-auto text-gray-600 sm:px-4 md:px-8">
+      <div className="relative lg:z-10 max-w-screen-xl mx-auto text-gray-600 sm:px-4 md:px-8">
         <div className="max-w-lg  px-4 sm:mx-auto sm:text-center sm:px-0">
           <TypographyH3 text='Me Contacter' />
           <TypographyP text='Pour m’aider à comprendre au mieux votre projet, veuillez me fournir le maximum de détails possible. Plus j’ai d’informations, mieux je peux répondre à vos besoins.' />

@@ -3,6 +3,7 @@ import { Layout } from "./partials/layout"
 import { Home } from "./home"
 import { Contact } from "./contact"
 import { Error404 } from "./error/404Error"
+import { ThemeProvider } from "@/hooks/themeProvider"
 
 
 const RootApp = () => {
@@ -22,7 +23,11 @@ const RootApp = () => {
       ]
     },
   ])
-  return <RouterProvider router={router} />
+  return (
+    <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
+      <RouterProvider router={router} />
+    </ThemeProvider>
+  )
 }
 
 export default RootApp
