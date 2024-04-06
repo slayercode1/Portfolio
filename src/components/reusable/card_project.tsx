@@ -21,14 +21,12 @@ export const CardProject: FC<CardProjectProps> = ({ image, company, technologie 
       </CardHeader>
 
 
-      <CardContent className="mt-2 flex items-center gap-8 text-xs p-0">
-        <div className="inline-flex sm:shrink-0 sm:items-center gap-2">
+      <CardContent className="mt-2 flex items-center gap-2 text-xs p-0">
           {
-            technologie.map((techno) => (
-              <Badge>{techno}</Badge>
+            technologie.map((techno, idx) => (
+              <Badge key={idx}>{techno}</Badge>
             ))
           }
-        </div>
       </CardContent>
 
     </Card>

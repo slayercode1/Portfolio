@@ -5,11 +5,18 @@ import { Sheet, SheetClose, SheetContent, SheetTrigger } from "./ui/sheet"
 import { ArrowRightIcon, MoonIcon, SunIcon } from "@radix-ui/react-icons"
 import { useTheme } from "@/hooks/themeProvider"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
 
 
 export const NavigationBar = () => {
   const navigate = useNavigate()
-  const { setTheme } = useTheme()
+  const { theme, setTheme } = useTheme()
   const pathname = window.location.pathname
 
   const navigation = [
@@ -50,10 +57,20 @@ export const NavigationBar = () => {
                               </Button>
                             </li>
                           </SheetClose>
-
                         )
                       })
                     }
+                    <Select onValueChange={(value ) => setTheme(value as never)} defaultValue={theme}>
+                      <SelectTrigger className="w-full]">
+                        <SelectValue placeholder="Theme" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="light">Light</SelectItem>
+                        <SelectItem value="dark">Dark</SelectItem>
+                        <SelectItem value="system">System</SelectItem>
+                      </SelectContent>
+                    </Select>
+
                   </ul>
                 </div>
               </SheetContent>
