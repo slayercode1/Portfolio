@@ -14,7 +14,7 @@ export const NavigationBar = () => {
   ]
 
   return (
-    <nav className="border-b w-full md:static md:text-sm md:border-none py-2">
+    <nav className="border-b w-full md:static md:text-sm md:border-none py-2 fixed backdrop-blur-sm bg-white/30 lg:backdrop-blur-none lg:bg-transparent z-10">
       <div className="items-center px-4 mx-auto md:flex">
         <div className="flex items-center justify-between py-1 md:block">
           <img

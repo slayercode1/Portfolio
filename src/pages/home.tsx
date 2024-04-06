@@ -9,7 +9,7 @@ import { GitHubLogoIcon, LinkedInLogoIcon, TwitterLogoIcon } from "@radix-ui/rea
 
 export const Home = () => {
   return (
-    <div className="w-full">
+    <div className="w-full pt-14 lg:pt-0">
       <div className="md:w-2/3  px-12">
         <TypographyH3 text="Bonjour, Je suis Yann Clain" />
         <TypographyH1 text="Développeur web & web mobile | Concepteur D'application" />
