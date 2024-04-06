@@ -37,7 +37,7 @@ export const Contact = () => {
     setLoading(true)
   };
   return (
-    <div className=' pt-14 lg:pt-0'>
+    <div className=' pt-14 lg:pt-0 fade-out'>
       <div className="relative lg:z-10 max-w-screen-xl mx-auto text-gray-600 sm:px-4 md:px-8">
         <div className="max-w-lg  px-4 sm:mx-auto sm:text-center sm:px-0">
           <TypographyH3 text='Me Contacter' />

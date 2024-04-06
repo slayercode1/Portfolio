@@ -10,7 +10,7 @@ import fuse from '../assets/img/Saly-43.png'
 
 export const Home = () => {
   return (
-    <div className="w-full pt-14 lg:pt-0">
+    <div className="w-full pt-14 lg:pt-0 fade-out">
       <div className="md:w-2/3 px-12 ">
         <TypographyH3 text="Bonjour, Je suis Yann Clain" />
         <div className="md:my-9">

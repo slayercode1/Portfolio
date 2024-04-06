@@ -4,9 +4,19 @@ import { Home } from "./home"
 import { Contact } from "./contact"
 import { Error404 } from "./error/404Error"
 import { ThemeProvider } from "@/hooks/themeProvider"
+import { useEffect, useState } from "react"
+import { Preloader } from "./preloader"
 
 
 const RootApp = () => {
+  const [preloader, setPreloader] = useState<boolean>(true)
+  useEffect(() => {
+
+    const timer = setTimeout(() => {
+      setPreloader(false)
+    }, 3000);
+    return () => clearTimeout(timer)
+  }, [])
   const router = createBrowserRouter([
     {
       element: <Layout />,
@@ -25,7 +35,9 @@ const RootApp = () => {
   ])
   return (
     <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
-      <RouterProvider router={router} />
+      {
+        preloader ? <Preloader /> : <RouterProvider router={router} />
+      }
     </ThemeProvider>
   )
 }
