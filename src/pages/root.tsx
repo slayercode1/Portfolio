@@ -6,6 +6,7 @@ import { Error404 } from "./error/404Error"
 import { ThemeProvider } from "@/hooks/themeProvider"
 import { useEffect, useState } from "react"
 import { Preloader } from "./preloader"
+import { AboutMe } from "./about-me"
 
 
 const RootApp = () => {
@@ -30,6 +31,10 @@ const RootApp = () => {
           path: "contact",
           element: <Contact />,
         },
+        {
+          path: 'about-me',
+          element: <AboutMe />
+        }
       ]
     },
   ])

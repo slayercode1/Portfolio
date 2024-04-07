@@ -20,8 +20,9 @@ export const NavigationBar = () => {
   const pathname = window.location.pathname
 
   const navigation = [
-    { title: "Accueil", path: "/" },
-    { title: "Contact", path: "/contact" },
+    { title: "_Accueil", path: "/" },
+    { title: "_About-me", path: "/about-me" },
+    { title: "_Contact", path: "/contact" },
   ]
 
   return (
