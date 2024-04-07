@@ -49,8 +49,10 @@ export const Contact = () => {
             className={errors ? "space-y-3" : "space-y-5"}
           >
             <div>
-              <Label htmlFor="fullname" className="font-medium">
+              <Label htmlFor="fullname" className="font-medium flex justify-between">
                 Nom (Complet)
+
+                <img width={24} height={24} src="https://camo.githubusercontent.com/f78d6a4f33cf75bf962fb1159d6278e3af05dfce113be61dd663c20802943e44/68747470733a2f2f632e74656e6f722e636f6d2f534f564d53586d5742316b41414141692f746f6e792d737461722d6a756d70696e672e676966" alt="image-start" />
               </Label>
               <Input
                 {...register('fullname')}

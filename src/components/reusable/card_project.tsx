@@ -6,17 +6,21 @@ type CardProjectProps = {
   technologie: Array<string>
   company: string
   image?: string
+  logo: Array<string>
 }
 
-export const CardProject: FC<CardProjectProps> = ({ image, company, technologie }) => {
+export const CardProject: FC<CardProjectProps> = ({ image, company, technologie, logo }) => {
   return (
     <Card className="block rounded-lg w-76 p-4">
       <CardHeader className="p-1">
-        <img
-          alt="image of project"
-          src={image ? image : noImage}
-          className="h-60 w-60 rounded-md object-cover"
-        />
+        <div className="flex items-center justify-center">
+          <img
+            alt="image of project"
+            src={image ? image : noImage}
+            className="h-60 w-60 rounded-md object-cover"
+          />
+        </div>
+        
         <CardTitle>{company}</CardTitle>
       </CardHeader>
 
@@ -24,7 +28,10 @@ export const CardProject: FC<CardProjectProps> = ({ image, company, technologie 
       <CardContent className="mt-2 flex items-center gap-2 text-xs p-0">
           {
             technologie.map((techno, idx) => (
-              <Badge key={idx}>{techno}</Badge>
+              <Badge key={idx}>
+                <img src={logo[idx]} alt="logo of technologie" width={16} height={16} className="mr-2 "/>
+                {techno}
+              </Badge>
             ))
           }
       </CardContent>
