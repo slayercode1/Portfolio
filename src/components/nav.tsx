@@ -21,6 +21,7 @@ export const NavigationBar = () => {
 
   const navigation = [
     { title: "_Accueil", path: "/" },
+    { title: "_Projet", path: "/project" },
     { title: "_About-me", path: "/about-me" },
     { title: "_Contact", path: "/contact" },
   ]
@@ -84,7 +85,7 @@ export const NavigationBar = () => {
             {
               navigation.map((item, idx) => {
                 return (
-                  <li key={idx} className="text-gray-700 hover:text-indigo-600">
+                  <li key={idx} className={`text-gray-700 hover:text-indigo-600 ${item.path === '/project' ? 'hidden': 'block'}`}>
                     <Button variant={"link"} onClick={() => {navigate(item.path)}} className={pathname == item.path ? "p-0 active": "p-0"}>
                       {item.title}
                     </Button>

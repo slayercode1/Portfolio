@@ -7,6 +7,7 @@ import { ThemeProvider } from "@/hooks/themeProvider"
 import { useEffect, useState } from "react"
 import { Preloader } from "./preloader"
 import { AboutMe } from "./about-me"
+import { Project } from "./project"
 
 
 const RootApp = () => {
@@ -18,6 +19,10 @@ const RootApp = () => {
     }, 3000);
     return () => clearTimeout(timer)
   }, [])
+
+
+
+
   const router = createBrowserRouter([
     {
       element: <Layout />,
@@ -34,6 +39,10 @@ const RootApp = () => {
         {
           path: 'about-me',
           element: <AboutMe />
+        },
+        {
+          path: 'project',
+          element: <Project />
         }
       ]
     },
