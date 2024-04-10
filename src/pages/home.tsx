@@ -2,8 +2,10 @@ import { Button } from "@/components/ui/button"
 import { GitHubLogoIcon, LinkedInLogoIcon, TwitterLogoIcon } from "@radix-ui/react-icons"
 import fuse from '../assets/img/Saly-43.png'
 import { ScrollLogo } from "@/components/scroll-logo"
+import { useNavigate } from "react-router-dom"
 
 export const Home = () => {
+  const navigate = useNavigate()
   return (
     <div className="w-full pt-14 md:pt-0 lg:pt-0 fade-out">
       <div className="md:w-2/3 px-12 sm:h-[calc(100vh-17rem)] flex flex-col justify-center items-start">
@@ -28,6 +30,10 @@ export const Home = () => {
               <TwitterLogoIcon /> X (Twitter)
             </Button>
           </a>
+        </div>
+
+        <div className="justify-end w-full hidden md:flex">
+          <Button onClick={() => navigate("/about-me", {state: "tabs-project"})} className="mt-8">Voir mes projets</Button>
         </div>
       </div>
       <img src={fuse} alt="logo fuse" width={250} className="absolute right-0 top-1/3 hidden md:block" />

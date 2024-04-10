@@ -25,6 +25,7 @@ interface CodeEditorProps {
 export const CodeEditor: React.FC<CodeEditorProps> = ({ code, hasProject = false }) => {
   const [selectedProject, setSelectedProject] = useState<string>(''); // Variable d'état pour stocker le projet sélectionné
 
+
   const handleLineClick = (projectName: string) => {
     setSelectedProject(projectName);
   };
@@ -82,9 +83,11 @@ export const CodeEditor: React.FC<CodeEditorProps> = ({ code, hasProject = false
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <a href={projectsData[selectedProject]?.websiteUrl} target='_blank'>
-              <AlertDialogAction>Visit website</AlertDialogAction>
-            </a>
+            {
+              projectsData[selectedProject]?.websiteUrl !== undefined && <a href={projectsData[selectedProject]?.websiteUrl} target='_blank'>
+                <AlertDialogAction>Visit website</AlertDialogAction>
+              </a>
+            }
           </AlertDialogFooter>
         </AlertDialogContent>
       </div>

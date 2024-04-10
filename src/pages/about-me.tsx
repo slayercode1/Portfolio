@@ -4,9 +4,12 @@ import { CodeEditor } from '@/components/code-editor';
 import gitBranch from '../assets/img/git-branch-outline.svg'
 import * as Tabs from "@radix-ui/react-tabs";
 import { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
 export const AboutMe = () => {
-  const [selectedTab, setSelectedTab] = useState<string>("personal");
+  const location = useLocation();
+  console.log(location.state)
+  const [selectedTab, setSelectedTab] = useState<string>(location.state === 'tabs-project' ? 'project' : "personal");
 
   const tabItems = [
     "personal",
@@ -103,8 +106,10 @@ console.log(getInfoUser())
                     <CodeEditor code={
                       `
 const project_01 = "SEIGOS (Yuakan Innovate)"
-const project_02 = "StepPost"
+const project_02 = "StepPost (Step)"
 const project_03 = "TaskFlow (Projet personel)"
+const project_04 = "Projet IOT (Projet formation)"
+const project_05 = "Application mobile (Blog)"
 `
                     } hasProject={true} />
                   </div>
