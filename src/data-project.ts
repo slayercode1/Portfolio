@@ -1,5 +1,5 @@
 import { ProjectData } from "./components/project-detail";
-import noimage from './assets/img/no-image.png'
+// import noimage from './assets/img/no-image.png'
 import iot from './assets/img/home.png'
 import taskflow from './assets/img/taskflow.png'
 import mobile from './assets/img/mobile.png'
