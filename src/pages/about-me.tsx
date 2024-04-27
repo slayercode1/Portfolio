@@ -1,14 +1,13 @@
-import { ChevronDownIcon, Cross2Icon } from '@radix-ui/react-icons'
-import ts from '../assets/img/typescript-icon.svg'
 import { CodeEditor } from '@/components/code-editor';
-import gitBranch from '../assets/img/git-branch-outline.svg'
+import { ChevronDownIcon, Cross2Icon } from '@radix-ui/react-icons'
 import * as Tabs from "@radix-ui/react-tabs";
 import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import gitBranch from '../assets/img/git-branch-outline.svg'
+import ts from '../assets/img/typescript-icon.svg'
 
 export const AboutMe = () => {
   const location = useLocation();
-  console.log(location.state)
   const [selectedTab, setSelectedTab] = useState<string>(location.state === 'tabs-project' ? 'project' : "personal");
 
   const tabItems = [

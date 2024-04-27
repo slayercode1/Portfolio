@@ -2,6 +2,8 @@
 import { projectsData } from '@/data-project';
 import React from 'react';
 import { Badge } from './ui/badge';
+import { AlertDialog, AlertDialogTrigger, AlertDialogContent, AlertDialogCancel } from './ui/alert-dialog';
+import { Button } from './ui/button';
 
 export interface ProjectData {
   [key: string]: {
@@ -24,12 +26,14 @@ export const ProjectDetails: React.FC<ProjectDetailsProps> = ({ selectedProject 
 
   const { imageUrl, description, technologies } = projectsData[selectedProject];
 
+
+
   return (
-    <div>
-      <div className='flex items-center justify-center'>
+    <AlertDialog>
+      <AlertDialogTrigger className='flex items-center justify-center cursor-pointer w-full'>
         <img className=" h-60 w-auto rounded-md object-cover" src={imageUrl} alt={selectedProject} />
 
-      </div>
+      </AlertDialogTrigger>
       <p className="scroll-m-20 text-xs tracking-tight py-2 text-gray-500 uppercase dark:text-white">About</p>
       <p className='mb-4'>{description}</p>
 
@@ -46,7 +50,24 @@ export const ProjectDetails: React.FC<ProjectDetailsProps> = ({ selectedProject 
           ))
         }
       </div>
-    </div>
+
+      <AlertDialogContent className='bg-transparent border-none absolute shadow-none'>
+        <AlertDialogCancel className='z-50 -right-[98%] -top-[75%] absolute bg-transparent border-none hover:bg-transparent'>
+          <Button variant={'outline'} >x</Button>
+        </AlertDialogCancel>
+        <div className='flex justify-center items-center ' >
+          <img
+            src={imageUrl}
+            alt={selectedProject}
+            className='h-60'
+            style={{ transform: `scale(3)` }}
+          />
+        </div>
+      </AlertDialogContent>
+
+
+
+    </AlertDialog>
   );
 };
 

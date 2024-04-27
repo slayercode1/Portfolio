@@ -21,8 +21,6 @@ const RootApp = () => {
   }, [])
 
 
-
-
   const router = createBrowserRouter([
     {
       element: <Layout />,
