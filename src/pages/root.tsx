@@ -8,6 +8,8 @@ import { useEffect, useState } from "react"
 import { Preloader } from "./preloader"
 import { AboutMe } from "./about-me"
 import { Project } from "./project"
+import {Toaster} from "@/components/ui/sonner.tsx";
+import '../utils/i18n'
 
 
 const RootApp = () => {
@@ -48,7 +50,7 @@ const RootApp = () => {
   return (
     <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
       {
-        preloader ? <Preloader /> : <RouterProvider router={router} />
+        preloader ? <Preloader /> : <div> <RouterProvider router={router} />  <Toaster /> </div>
       }
     </ThemeProvider>
   )

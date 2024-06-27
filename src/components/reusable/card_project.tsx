@@ -1,41 +1,78 @@
-import { FC } from "react"
+import { FC, useState } from "react"
 import { Badge } from "../ui/badge"
 import noImage from '../../assets/img/no-image.png'
-import { Card, CardContent, CardHeader, CardTitle } from "../ui/card"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui/card"
+import { Dialog, DialogContent, DialogHeader, DialogTrigger } from "../ui/dialog"
+import { Button } from "../ui/button"
+import { MinusIcon, PlusIcon } from "@radix-ui/react-icons"
 type CardProjectProps = {
   technologie: Array<string>
   company: string
   image?: string
-  logo: Array<string>
+  description: string
 }
 
-export const CardProject: FC<CardProjectProps> = ({ image, company, technologie, logo }) => {
+export const CardProject: FC<CardProjectProps> = ({ image, company, technologie, description }) => {
+  const [scale, setScale] = useState<number>(1)
+
+  const handleZoomIN = () => {
+    setScale((scale) => scale + 0.1)
+  }
+
+  const handleZoomOut = () => {
+    setScale((scale) => scale - 0.1)
+  }
+
   return (
-    <Card className="block rounded-lg w-76 p-4">
-      <CardHeader className="p-1">
-        <div className="flex items-center justify-center">
+    <Dialog>
+      <Card className="block rounded-lg w-full p-4">
+        <CardHeader className="p-1">
+          <DialogTrigger asChild className="flex items-center justify-center">
+            <img
+              alt="image of project"
+              src={image ? image : noImage}
+              className="h-60 w-full rounded-md object-contain"
+            />
+          </DialogTrigger>
+
+          <CardTitle>{company}</CardTitle>
+        </CardHeader>
+        <CardContent className="mt-2  text-xs p-0">
+          <CardDescription>{description}</CardDescription>
+          <div className="flex flex-wrap items-center gap-2 mt-2">
+            {
+              technologie.map((techno, idx) => (
+                <Badge key={idx}>
+                  {techno}
+                </Badge>
+              ))
+            }
+          </div>
+        </CardContent>
+      </Card>
+      <DialogContent className="h-screen">
+        <DialogHeader className=" z-50">
+          <Button variant="outline" size="icon" onClick={handleZoomIN}>
+            <PlusIcon className="h-4 w-4" />
+          </Button>
+
+          <Button variant="outline" size="icon" onClick={handleZoomOut}>
+            <MinusIcon className="h-4 w-4" />
+          </Button>
+        </DialogHeader>
+
+        <div className='overflow-auto ' >
           <img
-            alt="image of project"
-            src={image ? image : noImage}
-            className="h-60 w-60 rounded-md object-cover"
+            src={image}
+            alt={`image ${company}`}
+            className='h-screen w-full cursor-move object-contain '
+            style={{ transform: `scale(${scale}) `}}
           />
         </div>
-        
-        <CardTitle>{company}</CardTitle>
-      </CardHeader>
-
-
-      <CardContent className="mt-2 flex items-center gap-2 text-xs p-0">
-          {
-            technologie.map((techno, idx) => (
-              <Badge key={idx}>
-                <img src={logo[idx]} alt="logo of technologie" width={16} height={16} className="mr-2 "/>
-                {techno}
-              </Badge>
-            ))
-          }
-      </CardContent>
-
-    </Card>
+      </DialogContent>
+    </Dialog>
   )
 }
+
+
+

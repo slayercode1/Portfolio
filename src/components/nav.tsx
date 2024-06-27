@@ -2,7 +2,7 @@ import { Button } from "./ui/button"
 import { useNavigate } from "react-router-dom"
 import logo from '../assets/img/logo.png'
 import { Sheet, SheetClose, SheetContent, SheetTrigger } from "./ui/sheet"
-import { ArrowRightIcon, MoonIcon, SunIcon } from "@radix-ui/react-icons"
+import {ArrowRightIcon, GlobeIcon, MoonIcon, SunIcon} from "@radix-ui/react-icons"
 import { useTheme } from "@/hooks/themeProvider"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import {
@@ -12,22 +12,30 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
+import {useTranslation} from "react-i18next";
 
 
 export const NavigationBar = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate()
   const { theme, setTheme } = useTheme()
   const pathname = window.location.pathname
+  const { i18n } = useTranslation();
 
   const navigation = [
-    { title: "_Accueil", path: "/" },
-    { title: "_Projet", path: "/project" },
-    { title: "_About-me", path: "/about-me" },
-    { title: "_Contact", path: "/contact" },
+    { title: `${t('nav.home')}`, path: "/" },
+    { title: `${t('nav.project')}`, path: "/project" },
+    { title: `${t('nav.about')}`, path: "/about-me" },
+    { title: `${t('nav.contact')}`, path: "/contact" },
   ]
 
+  const changeLanguage = (lng: string) => {
+    i18n.changeLanguage(lng);
+    localStorage.setItem('i18nextLng', lng); // Persiste la langue dans localStorage
+  };
+
   return (
-    <nav className="border-b w-full md:static md:text-sm md:border-none py-2 fixed backdrop-blur-sm bg-white/30 dark:bg-black/30 lg:dark:bg-transparent lg:backdrop-blur-none lg:bg-transparent z-10">
+    <nav className="border-b w-full md:static md:text-sm md:border-none py-2 fixed backdrop-blur-sm md:backdrop-blur-none bg-white/30 dark:bg-black/30 lg:dark:bg-transparent lg:backdrop-blur-none lg:bg-transparent z-10">
       <div className="items-center px-4 mx-auto md:flex">
         <div className="flex items-center justify-between py-1 md:block">
           <img
@@ -63,13 +71,23 @@ export const NavigationBar = () => {
                       })
                     }
                     <Select onValueChange={(value ) => setTheme(value as never)} defaultValue={theme}>
-                      <SelectTrigger className="w-full]">
+                      <SelectTrigger className="w-full">
                         <SelectValue placeholder="Theme" />
                       </SelectTrigger>
                       <SelectContent>
                         <SelectItem value="light">Light</SelectItem>
                         <SelectItem value="dark">Dark</SelectItem>
                         <SelectItem value="system">System</SelectItem>
+                      </SelectContent>
+                    </Select>
+
+                    <Select onValueChange={(value ) => changeLanguage(value as never)} defaultValue={i18n.language}>
+                      <SelectTrigger className="w-full">
+                        <SelectValue placeholder="Chose langage" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="fr">{t('select.fr')}</SelectItem>
+                        <SelectItem value="en">{t('select.en')}</SelectItem>
                       </SelectContent>
                     </Select>
 
@@ -111,6 +129,22 @@ export const NavigationBar = () => {
                 </DropdownMenuItem>
                 <DropdownMenuItem onClick={() => setTheme("system")}>
                   System
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" size="icon">
+                  <GlobeIcon className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-100" />
+                  <span className="sr-only">Toggle translate</span>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent  align="end">
+                <DropdownMenuItem onClick={() => changeLanguage("fr")}>
+                  {t('select.fr')}
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => changeLanguage("en")}>
+                  {t('select.en')}
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
